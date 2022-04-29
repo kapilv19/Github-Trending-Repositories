@@ -1,8 +1,10 @@
-package com.kapilv.githubtrending;
+package com.kapilv.githubtrending.views.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.kapilv.githubtrending.R;
 
 public class MainActivity extends AppCompatActivity {
 
