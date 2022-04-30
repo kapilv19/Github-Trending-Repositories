@@ -14,4 +14,6 @@
 
     <color name="colorTextDefault">#ADA8A3</color>
     <color name="colorTextTrendingLabel">#DAD7D4</color>
+    <color name="colorErrorTitle" />
+    <color name="colorErrorDescription">#929292</color>
 </resources>

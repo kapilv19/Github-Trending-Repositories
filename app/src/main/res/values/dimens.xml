@@ -9,4 +9,5 @@
     <dimen name="dimen_avatar_loading">32dp</dimen>
     <dimen name="dimen_loading_rectangle_corner">4dp</dimen>
     <dimen name="dimen_divider_height">1dp</dimen>
+    <dimen name="dimen_error_title">18dp</dimen>
 </resources>
