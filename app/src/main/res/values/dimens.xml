@@ -6,4 +6,7 @@
     <dimen name="dimen_repo_author">12dp</dimen>
     <dimen name="dimen_repo_info_text">12dp</dimen>
     <dimen name="dimen_repo_info_icons">16dp</dimen>
+    <dimen name="dimen_avatar_loading">32dp</dimen>
+    <dimen name="dimen_loading_rectangle_corner">4dp</dimen>
+    <dimen name="dimen_divider_height">1dp</dimen>
 </resources>

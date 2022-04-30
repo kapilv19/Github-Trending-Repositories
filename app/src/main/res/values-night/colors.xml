@@ -9,6 +9,7 @@
     <color name="colorOnSecondary">#52575C</color>
 
     <color name="colorDivider">#171717</color>
+    <color name="colorListItemBackground">#000000</color>
     <color name="colorGrey">#dddddd</color>
 
     <color name="colorTextDefault">#ADA8A3</color>
