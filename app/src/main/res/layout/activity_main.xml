@@ -27,7 +27,8 @@
         android:layout_marginBottom="14dp"
         android:fontFamily="@font/roboto_medium"
         android:text="@string/label_trending"
-        android:textSize="21dp"
+        android:textColor="@color/colorTextTrendingLabel"
+        android:textSize="@dimen/dimen_trending_label"
         app:layout_constraintBottom_toBottomOf="@+id/main_toolbar"
         app:layout_constraintEnd_toEndOf="@+id/main_toolbar"
         app:layout_constraintStart_toStartOf="@+id/main_toolbar"
@@ -56,6 +57,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <include
+                layout="@layout/layout_repository_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </FrameLayout>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

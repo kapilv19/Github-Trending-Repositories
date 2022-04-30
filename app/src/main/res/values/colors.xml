@@ -8,12 +8,10 @@
     <color name="colorSecondaryVariant">#8031B057</color>
     <color name="colorOnSecondary">#52575C</color>
 
-    <color name="colorPrimaryNight">#000000</color>
-    <color name="colorPrimaryVariantNight">#000000</color>
-    <color name="colorOnPrimaryNight">#ADA8A3</color>
-
-    <color name="colorTrendingLabel">#25282B</color>
     <color name="colorDivider">#E8E8E8</color>
+    <color name="colorGrey">#dddddd</color>
+    <color name="colorIconLang">#F44336</color>
 
-
+    <color name="colorTextDefault">#52575C</color>
+    <color name="colorTextTrendingLabel">#25282B</color>
 </resources>
