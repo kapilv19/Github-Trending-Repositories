@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GitHub Trending</string>
+    <string name="label_trending">Trending</string>
 </resources>

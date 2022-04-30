@@ -11,4 +11,9 @@
     <color name="colorPrimaryNight">#000000</color>
     <color name="colorPrimaryVariantNight">#000000</color>
     <color name="colorOnPrimaryNight">#ADA8A3</color>
+
+    <color name="colorTrendingLabel">#25282B</color>
+    <color name="colorDivider">#E8E8E8</color>
+
+
 </resources>
