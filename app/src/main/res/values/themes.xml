@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.GitHubTrending" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.GitHubTrending" parent="Theme.MaterialComponents.DayNight">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
@@ -11,11 +11,14 @@
         <item name="colorOnSecondary">@color/colorOnSecondary</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <!-- Customize your theme here. -->
         <item name="android:colorBackground">@color/colorPrimary</item>
 
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="overlapAnchor">false</item>
+        <item name="android:dropDownVerticalOffset">?attr/actionBarSize</item>
     </style>
 
     <style name="Theme.GitHubTrending.Button">
@@ -25,7 +28,7 @@
         <item name="android:clickable">true</item>
         <item name="android:fontFamily">@font/roboto_medium</item>
         <item name="android:textColor">@color/colorSecondary</item>
-        <item name="android:textSize">@dimen/dime_repo_name</item>
+        <item name="android:textSize">@dimen/dimen_repo_name</item>
         <item name="android:textAllCaps">true</item>
     </style>
 </resources>

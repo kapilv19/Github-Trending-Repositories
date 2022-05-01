@@ -10,4 +10,6 @@
     <string name="label_retry">Retry</string>
     <string name="label_error_title">Something went wrong..</string>
     <string name="label_error_description">An alien is probably blocking your signal.</string>
+    <string name="label_sort_by_name">Sort by Name</string>
+    <string name="label_sort_by_stars">Sort by Stars</string>
 </resources>

@@ -17,4 +17,5 @@
     <color name="colorTextTrendingLabel">#25282B</color>
     <color name="colorErrorTitle">#4A4A4A</color>
     <color name="colorErrorDescription">#929292</color>
+    <color name="colorBorder">#50000000</color>
 </resources>
