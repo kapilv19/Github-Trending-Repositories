@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">GitHub Trending</string>
+    <string name="label_trending">Trending</string>
+    <string name="label_repo_author">Author</string>
+    <string name="label_repo_name">Repository Name</string>
+    <string name="label_repo_description">Description</string>
+    <string name="label_repo_lang">Language</string>
+    <string name="label_repo_stars">Stars</string>
+    <string name="label_repo_forks">Forks</string>
+    <string name="label_retry">Retry</string>
+    <string name="label_error_title">Something went wrong..</string>
+    <string name="label_error_description">An alien is probably blocking your signal.</string>
+    <string name="label_sort_by_name">Sort by Name</string>
+    <string name="label_sort_by_stars">Sort by Stars</string>
 </resources>

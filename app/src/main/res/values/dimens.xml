@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dimen_avatar">48dp</dimen>
+    <dimen name="dimen_trending_label">21dp</dimen>
+    <dimen name="dimen_repo_name">15dp</dimen>
+    <dimen name="dimen_repo_author">12dp</dimen>
+    <dimen name="dimen_repo_info_text">12dp</dimen>
+    <dimen name="dimen_repo_info_icons">16dp</dimen>
+    <dimen name="dimen_avatar_loading">32dp</dimen>
+    <dimen name="dimen_loading_rectangle_corner">4dp</dimen>
+    <dimen name="dimen_divider_height">1dp</dimen>
+    <dimen name="dimen_error_title">18dp</dimen>
+    <dimen name="dimen_more_icon">24dp</dimen>
+</resources>

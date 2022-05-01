@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryVariant">#000000</color>
+    <color name="colorOnPrimary">#ADA8A3</color>
+
+    <color name="colorSecondary">#31B057</color>
+    <color name="colorSecondaryVariant">#8031B057</color>
+    <color name="colorOnSecondary">#52575C</color>
+
+    <color name="colorDivider">#171717</color>
+    <color name="colorListItemBackground">#000000</color>
+    <color name="colorGrey">#dddddd</color>
+
+    <color name="colorTextDefault">#ADA8A3</color>
+    <color name="colorTextTrendingLabel">#DAD7D4</color>
+    <color name="colorErrorTitle" />
+    <color name="colorErrorDescription">#929292</color>
+</resources>

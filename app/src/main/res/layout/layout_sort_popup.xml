@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:padding="16dp">
+
+        <com.kapilv.githubtrending.views.widgets.ShadowView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            app:backgroundColor="@color/colorPrimary"
+            app:blurRadius="8dp"
+            app:cornerRadius="4dp"
+            app:enableShadow="true"
+            app:shadowBottomOffset="2dp"
+            app:shadowEndOffset="0dp"
+            app:shadowStartOffset="0dp"
+            app:shadowTopOffset="0dp">
+
+            <TextView
+                android:id="@+id/btn_sort_stars"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/drawable_background_sort_button"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/roboto"
+                android:padding="16dp"
+                android:text="@string/label_sort_by_stars"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorTextDefault"
+                android:textSize="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/btn_sort_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/btn_sort_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/drawable_background_sort_button"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/roboto"
+                android:padding="16dp"
+                android:text="@string/label_sort_by_name"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorTextDefault"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_sort_stars" />
+        </com.kapilv.githubtrending.views.widgets.ShadowView>
+
+    </FrameLayout>
+
+</layout>
