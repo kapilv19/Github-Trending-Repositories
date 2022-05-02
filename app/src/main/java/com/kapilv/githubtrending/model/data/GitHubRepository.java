@@ -1,5 +1,6 @@
 package com.kapilv.githubtrending.model.data;
 
+import android.graphics.Color;
 import android.widget.ImageView;
 
 import androidx.databinding.BindingAdapter;
@@ -133,16 +134,6 @@ public class GitHubRepository {
 
     public void setBuiltBy(List<GithubUser> builtBy) {
         this.builtBy = builtBy;
-    }
-
-    @BindingAdapter({ "avatar" })
-    public static void loadImage(ImageView imageView, String imageURL) {
-        Glide.with(imageView.getContext())
-                .setDefaultRequestOptions(new RequestOptions()
-                        .circleCrop())
-                .load(imageURL)
-                .placeholder(R.drawable.drawable_icon_avatar)
-                .into(imageView);
     }
 
     @Override
