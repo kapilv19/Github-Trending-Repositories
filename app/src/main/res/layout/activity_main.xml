@@ -76,18 +76,23 @@
                 android:layout_height="match_parent">
 
                 <include
+                    android:id="@+id/main_loading_view"
                     layout="@layout/layout_loading_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:visibility="visible" />
 
-                <include
-                    layout="@layout/layout_repository_list"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/main_repo_list_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                    tools:listitem="@layout/layout_repository_list_item">
+
+                </androidx.recyclerview.widget.RecyclerView>
 
                 <include
+                    android:id="@+id/main_error_view"
                     layout="@layout/layout_error"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

@@ -1,10 +1,18 @@
 package com.kapilv.githubtrending.model.data;
 
+import android.widget.ImageView;
+
+import androidx.databinding.BindingAdapter;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.gson.annotations.SerializedName;
+import com.kapilv.githubtrending.R;
 
 import java.util.List;
+import java.util.Objects;
 
-public class TrendingRepositoriesModel {
+public class TrendingRepository {
 
     @SerializedName("author")
     private String author;
@@ -125,5 +133,38 @@ public class TrendingRepositoriesModel {
 
     public void setBuiltBy(List<GithubUser> builtBy) {
         this.builtBy = builtBy;
+    }
+
+    @BindingAdapter({ "avatar" })
+    public static void loadImage(ImageView imageView, String imageURL) {
+        Glide.with(imageView.getContext())
+                .setDefaultRequestOptions(new RequestOptions()
+                        .circleCrop())
+                .load(imageURL)
+                .placeholder(R.drawable.drawable_icon_avatar)
+                .into(imageView);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TrendingRepository that = (TrendingRepository) o;
+        return stars == that.stars &&
+                forks == that.forks &&
+                currentPeriodStars == that.currentPeriodStars &&
+                author.equals(that.author) &&
+                name.equals(that.name) &&
+                avatar.equals(that.avatar) &&
+                url.equals(that.url) &&
+                description.equals(that.description) &&
+                language.equals(that.language) &&
+                languageColor.equals(that.languageColor) &&
+                builtBy.equals(that.builtBy);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(author, name, url, description, language);
     }
 }

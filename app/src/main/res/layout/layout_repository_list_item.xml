@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data>
 
+        <import type="android.graphics.Color"/>
+        <variable
+            name="repo"
+            type="com.kapilv.githubtrending.model.data.TrendingRepository"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,7 +21,8 @@
             android:id="@+id/iv_avatar"
             android:layout_width="@dimen/dimen_avatar"
             android:layout_height="@dimen/dimen_avatar"
-            android:src="@drawable/drawable_icon_avatar"
+            android:background="@drawable/drawable_icon_avatar"
+            bind:avatar="@{repo.avatar}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:fontFamily="@font/roboto"
-            android:text="@string/label_repo_author"
+            android:text="@{repo.author}"
             android:textColor="@color/colorTextDefault"
             android:textSize="@dimen/dimen_repo_author"
             app:layout_constraintStart_toEndOf="@+id/iv_avatar"
@@ -39,7 +45,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="6dp"
             android:fontFamily="@font/roboto_medium"
-            android:text="@string/label_repo_name"
+            android:text="@{repo.name}"
             android:textColor="@color/colorTextDefault"
             android:textSize="@dimen/dimen_repo_name"
             app:layout_constraintStart_toEndOf="@+id/iv_avatar"
@@ -61,7 +67,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/pingfang_sc_regular"
-                android:text="@string/label_repo_description"
+                android:text="@{repo.description}"
                 android:textColor="@color/colorTextDefault"
                 android:textSize="@dimen/dimen_repo_info_text"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -75,6 +81,7 @@
                 android:layout_marginTop="8dp"
                 android:padding="3dp"
                 android:src="@drawable/drawable_icon_lang"
+                app:tint="@{Color.parseColor(repo.languageColor)}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_repo_info_description" />
 
@@ -84,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:fontFamily="@font/roboto"
-                android:text="@string/label_repo_lang"
+                android:text="@{repo.language}"
                 android:textColor="@color/colorTextDefault"
                 android:textSize="@dimen/dimen_repo_info_text"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_lang"
@@ -107,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:fontFamily="@font/roboto"
-                android:text="@string/label_repo_stars"
+                android:text="@{repo.stars}"
                 android:textColor="@color/colorTextDefault"
                 android:textSize="@dimen/dimen_repo_info_text"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_lang"
@@ -130,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:fontFamily="@font/roboto"
-                android:text="@string/label_repo_forks"
+                android:text="@{repo.forks}"
                 android:textColor="@color/colorTextDefault"
                 android:textSize="@dimen/dimen_repo_info_text"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_lang"
