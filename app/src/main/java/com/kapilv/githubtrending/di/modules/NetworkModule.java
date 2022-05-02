@@ -20,6 +20,7 @@ import okhttp3.Cache;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -33,15 +34,12 @@ public class NetworkModule {
             @NonNull
             @Override
             public okhttp3.Response intercept(@NonNull Chain chain) throws IOException {
-                Request request = chain.request();
-
-                int maxStale = 60 * 60 * 2; // Offline cache available for 2 Hours
-                request = request.newBuilder()
-                        .header("Cache-Control", "public, only-if-cached, max-stale=" + maxStale)
+                okhttp3.Response response = chain.proceed(chain.request());
+                int maxAge = 60 * 60 * 2; // read from cache for 2 hours even if there is internet connection
+                return response.newBuilder()
+                        .header("Cache-Control", "public, max-age=" + maxAge)
                         .removeHeader("Pragma")
                         .build();
-
-                return chain.proceed(request);
             }
         };
     }
@@ -65,7 +63,7 @@ public class NetworkModule {
     @Singleton
     OkHttpClient provideOkHttpClient(Interceptor interceptor, Cache cache) {
         OkHttpClient.Builder client = new OkHttpClient.Builder();
-        client.addInterceptor(interceptor);
+        client.addNetworkInterceptor(interceptor);
         client.cache(cache);
         return client.build();
     }
