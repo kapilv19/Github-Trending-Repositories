@@ -12,7 +12,7 @@ import com.kapilv.githubtrending.R;
 import java.util.List;
 import java.util.Objects;
 
-public class TrendingRepository {
+public class GitHubRepository {
 
     @SerializedName("author")
     private String author;
@@ -149,18 +149,18 @@ public class TrendingRepository {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TrendingRepository that = (TrendingRepository) o;
+        GitHubRepository that = (GitHubRepository) o;
         return stars == that.stars &&
                 forks == that.forks &&
                 currentPeriodStars == that.currentPeriodStars &&
-                author.equals(that.author) &&
-                name.equals(that.name) &&
-                avatar.equals(that.avatar) &&
-                url.equals(that.url) &&
-                description.equals(that.description) &&
-                language.equals(that.language) &&
-                languageColor.equals(that.languageColor) &&
-                builtBy.equals(that.builtBy);
+                Objects.equals(author, that.author) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(avatar, that.avatar) &&
+                Objects.equals(url, that.url) &&
+                Objects.equals(description, that.description) &&
+                Objects.equals(language, that.language) &&
+                Objects.equals(languageColor, that.languageColor) &&
+                Objects.equals(builtBy, that.builtBy);
     }
 
     @Override
