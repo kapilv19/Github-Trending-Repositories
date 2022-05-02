@@ -6,6 +6,11 @@
 
     <data>
 
+        <import type="com.kapilv.githubtrending.utils.constants.Constants"/>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.kapilv.githubtrending.viewModel.MainViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -80,13 +85,13 @@
                     layout="@layout/layout_loading_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:visibility="visible" />
+                    android:visibility="@{(viewModel.mStatus == Constants.Status.LOADING) ? View.VISIBLE : View.GONE}" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/main_repo_list_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:visibility="gone"
+                    android:visibility="@{(viewModel.mStatus == Constants.Status.LOADED) ? View.VISIBLE : View.GONE}"
                     tools:listitem="@layout/layout_repository_list_item">
 
                 </androidx.recyclerview.widget.RecyclerView>
@@ -96,7 +101,7 @@
                     layout="@layout/layout_error"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:visibility="gone" />
+                    android:visibility="@{(viewModel.mStatus == Constants.Status.ERROR) ? View.VISIBLE : View.GONE}" />
 
             </FrameLayout>
 
