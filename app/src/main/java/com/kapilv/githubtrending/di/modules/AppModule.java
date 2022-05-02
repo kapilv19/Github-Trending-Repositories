@@ -7,27 +7,22 @@ import com.kapilv.githubtrending.viewModel.MainViewModel;
 
 import javax.inject.Singleton;
 
+import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 
 @Module
 public class AppModule {
 
-    Application mApplication;
-
-    public AppModule(Application application) {
-        mApplication = application;
-    }
-
-    @Provides
-    @Singleton
-    Application providesApplication() {
-        return mApplication;
-    }
+//    Application mApplication;
+//
+//    public AppModule(Application application) {
+//        mApplication = application;
+//    }
 
     @Provides
     @Singleton
-    public MainViewModel provideMainViewModel() {
-        return new MainViewModel();
+    Context providesContext(Application application) {
+        return application.getApplicationContext();
     }
 }

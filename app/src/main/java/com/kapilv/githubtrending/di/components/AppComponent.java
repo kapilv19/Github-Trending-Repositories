@@ -1,22 +1,35 @@
 package com.kapilv.githubtrending.di.components;
 
+import android.app.Application;
+
+import com.kapilv.githubtrending.app.GithubTrendingApp;
 import com.kapilv.githubtrending.di.modules.AppModule;
+import com.kapilv.githubtrending.di.modules.ModelRepositoryModule;
 import com.kapilv.githubtrending.di.modules.NetworkModule;
-import com.kapilv.githubtrending.viewModel.MainViewModel;
-import com.kapilv.githubtrending.views.activities.MainActivity;
+import com.kapilv.githubtrending.di.modules.ViewModelModule;
 
 import javax.inject.Singleton;
+
+import dagger.BindsInstance;
 import dagger.Component;
 
 @Singleton
 @Component(
     modules = {
         AppModule.class,
-        NetworkModule.class
+        NetworkModule.class,
+        ViewModelModule.class,
+        ModelRepositoryModule.class
     }
 )
 public interface AppComponent {
 
-    void inject(MainActivity mainActivity);
-    void inject(MainViewModel mainViewModel);
+    @Component.Builder
+    interface Builder {
+        @BindsInstance
+        Builder application(Application application);
+        AppComponent build();
+    }
+
+    void inject(GithubTrendingApp app);
 }
