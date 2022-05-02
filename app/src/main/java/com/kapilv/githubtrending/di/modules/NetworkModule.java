@@ -12,16 +12,19 @@ import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.Cache;
+import okhttp3.CacheControl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
@@ -29,6 +32,7 @@ public class NetworkModule {
 
     @Provides
     @Singleton
+    @Named("cached_interceptor")
     Interceptor provideForceCacheInterceptor() {
         return new Interceptor() {
             @NonNull
@@ -40,6 +44,23 @@ public class NetworkModule {
                         .header("Cache-Control", "public, max-age=" + maxAge)
                         .removeHeader("Pragma")
                         .build();
+            }
+        };
+    }
+
+    @Provides
+    @Singleton
+    @Named("forced_interceptor")
+    Interceptor provideForceNetworkInterceptor() {
+        return new Interceptor() {
+            @NonNull
+            @Override
+            public okhttp3.Response intercept(@NonNull Chain chain) throws IOException {
+                Request request = chain.request();
+                request = request.newBuilder()
+                        .cacheControl(CacheControl.FORCE_NETWORK)
+                        .build();
+                return chain.proceed(request);
             }
         };
     }
@@ -61,7 +82,8 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    OkHttpClient provideOkHttpClient(Interceptor interceptor, Cache cache) {
+    @Named("cached_http")
+    OkHttpClient provideOkHttpClientCached(@Named("cached_interceptor") Interceptor interceptor, Cache cache) {
         OkHttpClient.Builder client = new OkHttpClient.Builder();
         client.addNetworkInterceptor(interceptor);
         client.cache(cache);
@@ -70,9 +92,33 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    Retrofit provideRetrofit(Gson gson, OkHttpClient okHttpClient) {
+    @Named("forced_http")
+    OkHttpClient provideOkHttpClientForced(@Named("forced_interceptor") Interceptor interceptor, Cache cache) {
+        OkHttpClient.Builder client = new OkHttpClient.Builder();
+        client.addInterceptor(interceptor);
+        client.cache(cache);
+        return client.build();
+    }
+
+    @Provides
+    @Singleton
+    @Named("cached")
+    Retrofit provideCachedRetrofit(Gson gson, @Named("cached_http") OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create(gson))
+                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+                .baseUrl(BASE_URL)
+                .client(okHttpClient)
+                .build();
+    }
+
+    @Provides
+    @Singleton
+    @Named("forced")
+    Retrofit provideForcedRetrofit(Gson gson, @Named("forced_http") OkHttpClient okHttpClient) {
+        return new Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
                 .baseUrl(BASE_URL)
                 .client(okHttpClient)
                 .build();

@@ -1,7 +1,9 @@
 package com.kapilv.githubtrending.di.modules;
 
 import com.kapilv.githubtrending.model.entities.ModelRepository;
+import com.kapilv.githubtrending.utils.network.TrendingRepositoriesService;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -13,7 +15,21 @@ public class ModelRepositoryModule {
 
     @Provides
     @Singleton
-    ModelRepository provideModelRepository(Retrofit retrofit) {
-        return new ModelRepository(retrofit);
+    @Named("forced_service")
+    TrendingRepositoriesService provideTrendingRepositoriesForcedService(@Named("forced") Retrofit retrofit) {
+        return retrofit.create(TrendingRepositoriesService.class);
+    }
+
+    @Provides
+    @Singleton
+    @Named("cached_service")
+    TrendingRepositoriesService provideTrendingRepositoriesCachedService(@Named("cached") Retrofit retrofit) {
+        return retrofit.create(TrendingRepositoriesService.class);
+    }
+
+    @Provides
+    @Singleton
+    ModelRepository provideModelRepository(@Named("forced_service") TrendingRepositoriesService trendingRepositoriesForcedService, @Named("cached_service") TrendingRepositoriesService trendingRepositoriesCachedService) {
+        return new ModelRepository(trendingRepositoriesForcedService, trendingRepositoriesCachedService);
     }
 }

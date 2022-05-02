@@ -2,6 +2,8 @@ package com.kapilv.githubtrending.model.data;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 public class GithubUser {
 
     @SerializedName("username")
@@ -35,5 +37,18 @@ public class GithubUser {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GithubUser that = (GithubUser) o;
+        return username.equals(that.username);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username);
     }
 }
